@@ -2,13 +2,17 @@
   <div class="custom-header__logo">
     {% if section.settings.logo %}
       <img src="{{ section.settings.logo | img_url: 'master' }}" alt="Logo">
+    {% else %}
+      <span class="store-name">{{ shop.name }}</span>
     {% endif %}
   </div>
   <div class="custom-header__announcement">
-    <p>{{ section.settings.announcement }}</p>
+    <p>{{ section.settings.announcement | default: "Welcome to our store" }}</p>
   </div>
   <div class="custom-header__button">
-    <a href="{{ section.settings.button_url }}" class="btn">{{ section.settings.button_text }}</a>
+    <a href="{{ section.settings.button_url | default: '/collections/all' }}" class="btn">
+      {{ section.settings.button_text | default: "Shop Now" }}
+    </a>
   </div>
 </header>
 
@@ -18,10 +22,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #f0f0f0; /* Adjust as needed */
+    background-color: #f0f0f0;
+    /* Adjust as needed */
   }
   .custom-header__logo img {
-    max-width: 100px; /* Adjust logo size */
+    max-width: 100px;
+    /* Adjust logo size */
   }
   .custom-header__announcement {
     text-align: center;
@@ -30,32 +36,40 @@
   .custom-header__button {
     margin-left: auto;
   }
+  .store-name {
+    font-size: 24px;
+    /* Adjust as needed */
+    font-weight: bold;
+  }
 </style>
 
 {% schema %}
-{
-  "name": "Custom Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "text",
-      "id": "announcement",
-      "label": "Announcement"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text"
-    },
-    {
-      "type": "url",
-      "id": "button_url",
-      "label": "Button URL"
-    }
-  ]
-}
+  {
+    "name": "Custom Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }, {
+        "type": "text",
+        "id": "announcement",
+        "label": "Announcement"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Header",
+        "category": "Custom"
+      }
+    ]
+  }
 {% endschema %}
