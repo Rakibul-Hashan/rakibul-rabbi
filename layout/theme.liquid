@@ -53,11 +53,11 @@
     %}
 
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+            {{ settings.type_body_font | font_face: font_display: 'swap' }}
+            {{ body_font_bold | font_face: font_display: 'swap' }}
+            {{ body_font_italic | font_face: font_display: 'swap' }}
+            {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+            {{ settings.type_header_font | font_face: font_display: 'swap' }}
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -123,10 +123,10 @@
         }
       {% endfor %}
 
-      {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
-        background-color: rgb(var(--color-background));
-      }
+            {{ scheme_classes | prepend: 'body' }} {
+              color: rgba(var(--color-foreground), 0.75);
+              background-color: rgb(var(--color-background));
+            }
 
       :root {
         --font-body-family: {{ settings.type_body_font.family }}, 
@@ -140,18 +140,18 @@
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
-        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
-        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+              --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+              --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
 
-        --media-padding: {{ settings.media_padding }}px;
-        --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
-        --media-border-width: {{ settings.media_border_thickness }}px;
-        --media-radius: {{ settings.media_radius }}px;
-        --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
-        --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
-        --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
-        --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
-        --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
+              --media-padding: {{ settings.media_padding }}px;
+              --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
+              --media-border-width: {{ settings.media_border_thickness }}px;
+              --media-radius: {{ settings.media_radius }}px;
+              --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
+              --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
+              --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
+              --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
+              --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
 
       --page-width: {{ settings.page_width | divided_by: 10 }}rem;
       --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
