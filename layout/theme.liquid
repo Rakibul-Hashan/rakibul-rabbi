@@ -342,9 +342,9 @@ body {
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
-    {%- endif -%}
+  {%- endif -%}
 
-    {% sections 'header-group' %}
+    {% comment %} {% sections 'header-group' %} {% endcomment %}
     {% section 'custom-header' %}
     {% comment %} {% section 'custom-header' %} {% endcomment %}
 
