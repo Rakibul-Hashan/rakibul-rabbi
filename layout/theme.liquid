@@ -342,11 +342,11 @@ body {
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
-    {%- endif -%}
+  {%- endif -%}
 
     {% comment %} {% sections 'header-group' %} {% endcomment %}
-    {% sections 'header-group' %}
-
+    {% sections 'custom-header' %}
+    <h1>hEllO</h1>
     <main
       id="MainContent"
       class="content-for-layout focus-none"
