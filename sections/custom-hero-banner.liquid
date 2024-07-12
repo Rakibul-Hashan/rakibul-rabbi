@@ -1,0 +1,109 @@
+{% comment %} 
+                                            This is the Liquid section template for the Custom Hero Banner Section.
+                                            It includes settings for heading text, paragraph text, button text and link,
+                                            background image, button color, and button hover color. It also includes the
+                                            necessary HTML structure to display these elements. 
+{% endcomment %}
+{{ 'custom-hero-banner.css' | asset_url | stylesheet_tag }}
+
+{% stylesheet %}
+  .custom-hero-banner .section-heading {
+    font-family: {{ section.settings.heading_font }};
+
+  }
+{% endstylesheet %}
+
+<section class="custom-hero-banner">
+  <div class="background-image" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');">
+    <!-- Background image will be set via CSS -->
+  </div>
+
+  <div class="content-box">
+  
+    <h2 style="font-family: {{ section.settings.heading_font }}" class="section-heading">{{ section.settings.heading_text }}</h2>
+    <p class="section-paragraph">{{ section.settings.paragraph_text }}</p>
+    {% render 'custom-button'
+      ,
+ button_text: section.settings.button_text
+      ,
+ button_link: section.settings.button_link
+      ,
+ button_color: section.settings.button_color
+      ,
+ button_hover_color: section.settings.button_hover_color
+    %}
+  </div>
+  <div class="hero-foot-note">
+    <p>{{ section.settings.foot_note }}</p>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Hero Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "foot_note",
+        "label": "Foot Note",
+        "default": "Lorem ipsum dolor sit amet"
+      },
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading Text",
+        "default": "Welcome to our website"
+      },
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Choose Heading Font Style",
+        "options": [
+          {
+            "value": "'Jost', sans-serif",
+            "label": "Jost"
+          }, {
+            "value": "'Lustria', serif",
+            "label": "Lustria"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "paragraph_text",
+        "label": "Paragraph Text",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Learn More"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }, {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      }, {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#007bff"
+      }, {
+        "type": "color",
+        "id": "button_hover_color",
+        "label": "Button Hover Color",
+        "default": "#0056b3"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Hero Banner",
+        "category": "Custom",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

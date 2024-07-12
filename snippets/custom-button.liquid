@@ -1,0 +1,24 @@
+{% assign button_class = 'button-' | append: section.id %}
+{% assign button_text = button_text | default: 'Button Text' %}
+{% assign button_link = button_link | default: '#' %}
+{% assign button_color = button_color | default: '#fff544' %}
+{% assign button_hover_color = button_hover_color | default: '#000' %}
+
+<style>
+  .{{ button_class }} .rr-button__link {
+    background-color: {{ button_color }};
+
+  }
+  .{{ button_class }}.rr-button__link:after {
+    background: {{ button_hover_color }};
+
+  }
+</style>
+
+<button class="rr-icon-button rr-wrapper {{ button_class }}">
+  <a href="{{ button_link }}" class="rr-button__link">
+    <span>{{ button_text }}
+      <i class="fa-solid fa-arrow-right-long rr-arrow"></i>
+    </span>
+  </a>
+</button>

@@ -1,87 +1,72 @@
-<header class="custom-header">
-  <div class="custom-header__logo">
-    {% if section.settings.logo %}
-      <img src="{{ section.settings.logo | img_url: 'master' }}" alt="Logo">
-    {% else %}
-      <span class="store-name">{{ section.settings.text_logo | default: shop.name }}</span>
-    {% endif %}
-  </div>
-  <div class="custom-header__announcement">
-    <p>{{ section.settings.announcement | default: "Welcome to our store" }}</p>
-  </div>
-  <div class="custom-header__button">
-    <a href="{{ section.settings.button_url | default: '/collections/all' }}" class="btn">
-      {{ section.settings.button_text | default: "Shop Now" }}
-    </a>
-  </div>
+<header class="rr-custom-header">
+  <div class="rr-logo">Your Logo</div>
+  <div class="rr-center-text">Your Center Text
+</div>
+  {% comment %} <button class="rr-icon-button rr-wrapper">
+                                <a href="#" class="rr-button__link">
+                                  <span>choose gift
+                                    <i class="fa-solid fa-arrow-right-long rr-arrow"></i>
+                                  </span>
+                                </a>
+                </button> {% endcomment %}
+
+  {% render 'custom-button'
+    ,
+ button_text: section.settings.button_text
+    ,
+ button_link: section.settings.button_link
+    ,
+ button_color: section.settings.button_color
+    ,
+ button_hover_color: section.settings.button_hover_color
+  %}
 </header>
 
-<style>
-  .custom-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: none;
-
-  } /* logo size */
-  .custom-header__logo img {
-    max-width: 100px;
-
-  }
-  .custom-header__announcement {
-    text-align: center;
-    flex-grow: 1;
-  }
-  .custom-header__button {
-    margin-left: auto;
-  }
-  .store-name {
-    font-size: 24px;
-    /* Adjust as needed */
-    font-weight: bold;
-  }
-</style>
 
 {% schema %}
   {
     "name": "Custom Header",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo"
-      },
-      {
         "type": "text",
-        "id": "text_logo",
-        "label": "Text Logo",
-        "default": ""
-      },
-      {
-        "type": "text",
-        "id": "announcement",
-        "label": "Announcement",
-        "default": "Welcome to our store"
+        "id": "heading",
+        "label": "Heading",
+        "default": "This is a custom section"
       },
       {
         "type": "text",
         "id": "button_text",
         "label": "Button Text",
-        "default": "Shop Now"
-      }, {
+        "default": "Learn More",
+        "info": "Text to display on the button"
+
+      },
+      {
         "type": "url",
-        "id": "button_url",
-        "label": "Button URL",
-        "default": "/collections/all"
+        "id": "button_link",
+        "label": "Button Link",
+        "info": "URL to link the button"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#fff544"
+      }, {
+        "type": "color",
+        "id": "button_hover_color",
+        "label": "Button Hover Color",
+        "info": "Color of the button when hovered",
+        "default": "#000"
       }
     ],
     "presets": [
       {
         "name": "Custom Header",
-        "category": "Custom"
+        "category": "Custom",
+        "blocks": []
       }
     ]
   }
+
 {% endschema %}
