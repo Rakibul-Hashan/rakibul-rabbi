@@ -1,4 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lustria&display=swap");
+/* 
+** Global Styles
+*/
+*{
+    box-sizing: border-box;
+}
+p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+/* Font Styles */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif;
+}
 
 /* Header Styles */
 .rr-custom-header {

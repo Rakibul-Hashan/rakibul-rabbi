@@ -1,0 +1,71 @@
+{{ 'custom-product-grid.css' | asset_url | stylesheet_tag }}
+
+
+<div class="rr-custom-product-grid">
+  <div class="rr-grid">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+      {% if product %}
+        <div class="rr-product-item">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <button
+            class="rr-product-popup-btn"
+            data-product-id="{{ product.id }}"
+            data-product-title="{{ product.title }}"
+            data-product-price="{{ product.price | money }}"
+            data-product-description="{{ product.description }}"
+            data-product-image="{{ product.featured_image | img_url: 'large' }}"
+            data-product-variants='{{ product.variants | json }}'
+            style="top: {{ block.settings.icon_top }}px; left: {{ block.settings.icon_left }}px;">
+            <span class="rr-plus-icon">+</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% render 'custom-grid-popup' %}
+
+
+{% schema %}
+  {
+    "name": "Custom Product Grid",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select Collection"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Select Product"
+          }, {
+            "type": "number",
+            "id": "icon_top",
+            "label": "Icon Top Position (px)",
+            "default": 10
+          }, {
+            "type": "number",
+            "id": "icon_left",
+            "label": "Icon Left Position (px)",
+            "default": 10
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Product Grid",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
