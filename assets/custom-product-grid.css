@@ -25,9 +25,10 @@
 }
 
 .rr-product-popup-btn {
+  padding: 1px 1px 5px 1px;
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: #f8f8f8;
+  color: black;
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -36,6 +37,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+.rr-plus-icon {
+  font-size: 28px;
 }
 
 .rr-close-btn {

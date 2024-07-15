@@ -2,6 +2,7 @@
 
 
 <div class="rr-custom-product-grid">
+  <h1>hello qqq</h1>
   <div class="rr-grid">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
@@ -17,7 +18,7 @@
             data-product-image="{{ product.featured_image | img_url: 'large' }}"
             data-product-variants='{{ product.variants | json }}'
             style="top: {{ block.settings.icon_top }}px; left: {{ block.settings.icon_left }}px;">
-            <span class="rr-plus-icon">+</span>
+            <span class="rr-plus-icon">&plus;</span>
           </button>
         </div>
       {% endif %}

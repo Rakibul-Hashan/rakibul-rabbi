@@ -1,130 +1,245 @@
 /* Popup container styles */
 .rr-popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    width: 310px; /* Width of the popup on desktop */
-    padding: 20px;
-    z-index: 1001; /* Above the overlay */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 310px; /* Width of the popup on desktop */
+  padding: 20px;
+  z-index: 1001; /* Above the overlay */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Overlay styles */
+.rr-popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1000; /* Ensures it’s on top */
+}
+
+/* Close button styles */
+.rr-popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Product image and info layout */
+.rr-product-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.rr-popup-product-image {
+  width: 120px;
+  height: 140px;
+}
+.rr-popup-product-image img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rr-product-info {
+  width: 60%;
+}
+
+.rr-popup-product-title {
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.rr-product-price {
+  font-family: "Lustria", serif;
+  font-weight: bold;
+}
+.rr-product-info p {
+  letter-spacing: 0.1px;
+  line-height: 110%;
+}
+.rr-popup-product-description ~ p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Product variants */
+.rr-product-variants {
+  margin-bottom: 18px;
+}
+/* 
+.rr-variant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rr-variant-item {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+} */
+
+.rr-variant-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(100px, 1fr)
+  ); /* Auto adjust columns to fit container */
+}
+
+/* Define keyframes for slide-in animation from left */
+@keyframes slide-in-left {
+  from {
+    background-position: -100% 0;
   }
-  
-  /* Overlay styles */
-  .rr-popup-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 1000; /* Ensures it’s on top */
+  to {
+    background-position: 0 0;
   }
-  
-  /* Close button styles */
-  .rr-popup-close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
+}
+
+/* Define keyframes for slide-in animation from right */
+@keyframes slide-in-right {
+  from {
+    background-position: 100% 0;
   }
-  
-  /* Product image and info layout */
-  .rr-product-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    gap: 10px;
+  to {
+    background-position: 0 0;
   }
-  
-  .rr-popup-product-image {
-    width: 120px;
-    height: 140px;
-  }
-  .rr-popup-product-image img {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  .rr-product-info {
-    width: 60%;
-  }
-  
-  .rr-popup-product-title {
-    font-size: 16px;
-    text-transform: capitalize;
-    font-weight: 300;
-  }
-  
-  .rr-product-price {
-    font-family: "Lustria", serif;
-    font-weight: bold;
-  }
-  .rr-product-info p {
-    letter-spacing: 0.1px;
-    line-height: 110%;
-  }
-  .rr-popup-product-description ~ p {
-    font-size: 14px;
-    font-weight: 300;
-  }
-  
-  /* Product variants */
-  .rr-product-variants {
-    margin-bottom: 18px;
-  }
-  
-  .rr-variant-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .rr-variant-item {
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    margin: 5px;
-  }
-  
-  /* Product size dropdown */
-  .rr-product-size {
-    margin-bottom: 20px;
-  }
-  
-  .rr-product-size label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .rr-product-size select {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Action button */
-  .rr-active-cut-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .rr-active-cut-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+/* Initial state for the variant item */
+.rr-variant-item {
+  text-align: center;
+  outline: 1px solid #000;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease; /* Transition for smooth color change */
+  position: relative; /* Make sure the position is relative for animation */
+  overflow: hidden; /* Hide overflow to ensure animation works correctly */
+}
+
+/* Add the sliding background color effect */
+.rr-variant-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* Default background color */
+  z-index: 1;
+  transition: left 0.5s ease; /* Smooth transition */
+}
+
+/* Selected state for the variant item */
+.rr-variant-item.selected::before {
+  left: 0; /* Move the background color to cover the item */
+  z-index: -1; /* Ensure text is on top */
+}
+
+.rr-variant-item.selected {
+  color: white;
+  z-index: 2; /* Ensure text is on top */
+}
+/* Product size dropdown */
+.rr-product-size {
+  margin-bottom: 20px;
+}
+/* CSS for select dropdown */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+.rr-product-size label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.rr-product-size select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none; /* Hide default arrow */
+  -webkit-appearance: none; /* Hide default arrow for WebKit browsers */
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+option {
+  font-size: inherit;
+}
+
+option:nth-child(1) ~ option {
+  text-align: center;
+}
+#product-size {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none; /* Hide default arrow */
+  -webkit-appearance: none; /* Hide default arrow for WebKit browsers */
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Arrow styling */
+.select-arrow {
+  position: absolute;
+  top: calc(50% - 4px);
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: #999 transparent transparent transparent;
+  transition: transform 0.3s ease; /* Add transition for smooth rotation */
+  pointer-events: none; /* Ensure the arrow doesn't capture mouse events */
+  z-index: 0;
+}
+
+/* Rotate arrow when select is open */
+#product-size.open + .select-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* Action button */
+.rr-active-cut-btn {
+  background-color: #000000;
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.rr-active-cut-btn:hover {
+  /* background-color: #0056b3; */
+}

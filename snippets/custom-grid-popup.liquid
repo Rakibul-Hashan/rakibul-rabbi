@@ -1,10 +1,3 @@
-{{ 'custom-grid-popup.css' | asset_url | stylesheet_tag }}
-{{ 'custom-grid-popup.js' | asset_url | script_tag }}
-
-{% comment %} 
-                            Popup container for the product 
-                            - Receives product details via Liquid variables 
-{% endcomment %}
 <div class="c-grid-popup-container">
   <div class="rr-popup-overlay" id="popup-overlay"></div>
   <div id="custom-product-popup" class="rr-popup">
@@ -26,14 +19,14 @@
           {% assign unique_colors = '' %}
           {% for variant in product.variants %}
             {% assign color_option = variant.option2 %}
-              {% unless unique_colors contains color_option %}
-
-              <button class="rr-icon-button rr-wrapper rr-variant-item  ">
-                <a href="#" class="rr-button__link">
-                  <span>{{ color_option }}</span>
-                </a>
-            </button>
-              {% comment %} <div class="rr-variant-item">{{ color_option }}</div> {% endcomment %}
+            {% assign color_value = variant.option2_value %} {# Adjust this to get the correct color value if available #}
+            {% unless unique_colors contains color_option %}
+              <div
+                class="rr-variant-item"
+                data-variant-id="{{ variant.id }}"
+                data-option1="{{ variant.option1 }}"
+                data-color="{{ color_value }}"
+                style="border-left: 5px solid {{ color_value }}">{{ color_option }}</div>
               {% assign unique_colors = unique_colors | append: color_option | append: ',' %}
             {% endunless %}
           {% endfor %}
@@ -41,18 +34,26 @@
       </div>
       <div class="rr-product-size">
         <label for="product-size">Size:</label>
-        <select id="product-size" name="product-size">
-          {% assign unique_sizes_dropdown = '' %}
-          {% for variant in product.variants %}
-            {% assign size_option = variant.option1 %}
-            {% unless unique_sizes_dropdown contains size_option %}
-              <option value="{{ variant.id }}">{{ size_option }}</option>
-              {% assign unique_sizes_dropdown = unique_sizes_dropdown | append: size_option | append: ',' %}
-            {% endunless %}
-          {% endfor %}
-        </select>
+        <div class="select-wrapper">
+          <select id="product-size" name="product-size">
+
+            {% assign unique_sizes_dropdown = '' %}
+
+            {% for variant in product.variants %}
+              {% assign size_option = variant.option1 %}
+              {% unless unique_sizes_dropdown contains size_option %}
+
+                <option value="{{ variant.id }}">{{ size_option }}</option>
+                {% assign unique_sizes_dropdown = unique_sizes_dropdown | append: size_option | append: ',' %}
+              {% endunless %}
+            {% endfor %}
+            <div class="select-arrow"></div>
+          </select>
+        </div>
       </div>
-      <button class="rr-btn rr-active-cut-btn">Add to Cart</button>
+      <button class="rr-btn rr-active-cut-btn">Add to Cart
+        <img src="https://cdn.shopify.com/s/files/1/0883/2149/1261/files/Line_15_1.png?v=1720975103" alt="">
+      </button>
     </div>
   </div>
 </div>
