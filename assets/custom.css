@@ -2,8 +2,8 @@
 /* 
 ** Global Styles
 */
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 p {
   margin-bottom: 0;
@@ -16,16 +16,20 @@ h2,
 h3,
 h4,
 h5,
-h6, button, input, select, textarea {
+h6,
+button,
+input,
+select,
+textarea {
   font-family: "Jost", sans-serif;
 }
-
 
 /* Button Styles */
 .rr-icon-button {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 /* Button Animation Styles */

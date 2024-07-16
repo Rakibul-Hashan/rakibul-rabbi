@@ -11,7 +11,7 @@
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
         <div class="rr-product-item">
-          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <img src="{{ product.featured_image | image_url: width: 1536 }}" alt="{{ product.title }}">
           <button
             class="rr-product-popup-btn"
             data-product-id="{{ product.id }}"

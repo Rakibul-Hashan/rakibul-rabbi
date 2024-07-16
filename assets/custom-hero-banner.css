@@ -67,6 +67,7 @@
   left: 50%;
   background: #fff;
   transform: translateX(-50%);
+  text-transform: uppercase;
 }
 @media (max-width: 768px) {
   .custom-hero-banner {
