@@ -52,17 +52,58 @@
 }
 
 @media (max-width: 768px) {
+  .custom-hero-banner {
+    position: relative;
+    height: unset;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+  }
   .custom-hero-banner .background-image {
-    height: 400px; /* Adjust height for mobile view */
+    height: 260px; /* Adjust height for mobile view */
     z-index: -1;
+    order: 1;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+  .custom-hero-banner .background-image button {
+    margin-bottom: 36px;
+  }
+  .custom-hero-banner .section-heading,
+  .custom-hero-banner .section-paragraph,
+  .custom-hero-banner .section-button {
+    text-align: center;
   }
 
+  /* 
+    content-box styles
+  */
+  .content-box button {
+    display: none;
+  }
   .custom-hero-banner .content-box {
     position: relative;
+    order: 0;
     background-color: rgba(255, 255, 255, 0.8); /* White box background color */
     padding: 20px;
+    left: unset;
     max-width: 100%; /* Adjust maximum width for mobile */
     margin-top: 0; /* Adjust as needed */
     transform: none; /* Reset transform */
+  }
+
+  .custom-hero-banner .section-heading {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  .hero-foot-note {
+    order: 2;
+    text-align: center;
+    padding: 10px;
+    font-style: 14px;
   }
 }

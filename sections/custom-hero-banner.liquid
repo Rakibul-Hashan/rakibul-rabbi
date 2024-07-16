@@ -1,8 +1,8 @@
 {% comment %} 
-                                            This is the Liquid section template for the Custom Hero Banner Section.
-                                            It includes settings for heading text, paragraph text, button text and link,
-                                            background image, button color, and button hover color. It also includes the
-                                            necessary HTML structure to display these elements. 
+                                              This is the Liquid section template for the Custom Hero Banner Section.
+                                              It includes settings for heading text, paragraph text, button text and link,
+                                              background image, button color, and button hover color. It also includes the
+                                              necessary HTML structure to display these elements. 
 {% endcomment %}
 {{ 'custom-hero-banner.css' | asset_url | stylesheet_tag }}
 
@@ -16,10 +16,20 @@
 <section class="custom-hero-banner">
   <div class="background-image" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');">
     <!-- Background image will be set via CSS -->
+    {% render 'custom-button'
+      ,
+ button_text: section.settings.button_text
+      ,
+ button_link: section.settings.button_link
+      ,
+ button_color: section.settings.button_color
+      ,
+ button_hover_color: section.settings.button_hover_color
+    %}
   </div>
 
   <div class="content-box">
-  
+
     <h2 style="font-family: {{ section.settings.heading_font }}" class="section-heading">{{ section.settings.heading_text }}</h2>
     <p class="section-paragraph">{{ section.settings.paragraph_text }}</p>
     {% render 'custom-button'

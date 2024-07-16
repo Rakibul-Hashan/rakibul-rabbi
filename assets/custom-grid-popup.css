@@ -139,24 +139,21 @@
 }
 /* small border to the left of color variant     */
 .rr-variant-item:after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: black;
-    z-index: 5;
-
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  z-index: 5;
 }
-
 
 /* 
   Add the sliding background color effect
   when the variant item is selected
 */
-
 
 /* Selected state for the variant item */
 .rr-variant-item.selected::before {
@@ -282,4 +279,60 @@ option:nth-child(1) ~ option {
       minmax(80px, 1fr)
     ); /* Adjust columns for mobile */
   }
+}
+/*  ========================== */
+
+.select-arrow {
+  transition: transform 0.3s;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.select-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none; /* Hide by default */
+  margin-top: 5px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f078";
+  height: 100%;
+  padding: 3px 10px;
+
+  font-weight: 900;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  border: 1px solid black;
+  transition: all 0.3s linear;
+}
+
+select#product-size {
+  border: 1px solid black;
+  border-radius: 0;
+}
+select#product-size:focus,
+select#product-size:active,
+select#product-size:focus-within,
+select#product-size:focus-visible {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+/* Change content and rotation when select is clicked */
+.select-wrapper.open::after {
+  content: "\f077"; /* Arrow up */
 }

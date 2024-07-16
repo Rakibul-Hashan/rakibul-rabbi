@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (imageElement) imageElement.src = productImage;
 
       variantListElement.innerHTML = "";
-      sizeSelectElement.innerHTML =
-        '<option value="">Choose your size</option>'; // Add default option
+      sizeSelectElement.innerHTML = `<div class="select-arrow"></div>
+        <option value="">Choose your size</option>`; // Add default option
 
       const uniqueColors = new Set();
       const uniqueSizes = new Set();
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update size dropdown based on selected color
             const selectedColor = this.innerText;
             sizeSelectElement.innerHTML =
-              '<option value="">Select Size</option>  <div class="select-arrow"></div>'; // Reset dropdown
+              '<option value="">Select Size   </option> '; // Reset dropdown
             productVariants.forEach((variant) => {
               if (variant.option2 === selectedColor) {
                 const sizeOption = document.createElement("option");
@@ -109,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 sizeSelectElement.appendChild(sizeOption);
               }
             });
-          
           });
         });
 
@@ -125,7 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Popup or overlay not found.");
     }
   }
-
+  document.querySelector(`#product-size`).addEventListener("click", () => {
+    const sizeSelectWrapper = document.querySelector(`.select-wrapper`);
+    sizeSelectWrapper.classList.toggle("open");
+  });
   function closePopup() {
     const popup = document.getElementById("custom-product-popup");
     const overlay = document.getElementById("popup-overlay");
