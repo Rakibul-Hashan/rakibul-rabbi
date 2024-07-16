@@ -117,9 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedVariantId = this.value;
       });
 
+      const body = document.querySelector("body");
       // Show popup and overlay
       popup.style.display = "block";
       overlay.style.display = "block";
+      body.style.overflowY = "hidden";
     } else {
       console.error("Popup or overlay not found.");
     }
@@ -131,9 +133,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function closePopup() {
     const popup = document.getElementById("custom-product-popup");
     const overlay = document.getElementById("popup-overlay");
+    const body = document.querySelector("body");
+  
     if (popup && overlay) {
       popup.style.display = "none";
       overlay.style.display = "none";
+      body.style.overflowY = "auto";
+      
     } else {
       console.error("Popup or overlay not found.");
     }

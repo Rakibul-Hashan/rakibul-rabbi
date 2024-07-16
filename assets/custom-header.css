@@ -1,95 +1,94 @@
 /* Header styles */
 .rr-custom-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.rr-logo {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.rr-center-text {
+  flex-grow: 2;
+  text-align: center;
+}
+
+
+.rr-menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mobile menu styles */
+.rr-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.rr-mobile-menu nav {
+  padding: 20px;
+}
+
+.rr-mobile-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rr-mobile-menu ul li {
+  margin: 10px 0;
+}
+
+.rr-mobile-menu ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.rr-close-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Show the menu button on mobile */
+@media screen and (max-width: 768px) {
+  .rr-menu-button {
+    display: block;
+    order: 1;
   }
-  
+  .rr-custom-header .rr-icon-button {
+    display: none;
+  }
+
   .rr-logo {
     flex-grow: 1;
     text-align: center;
+    order: 2;
   }
-  
+
   .rr-center-text {
-    flex-grow: 2;
-    text-align: center;
-  }
-  
-  .rr-menu-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
     display: none;
   }
-  
-  /* Mobile menu styles */
-  .rr-mobile-menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 80%;
-    height: 100%;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: left 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .rr-mobile-menu nav {
-    padding: 20px;
-  }
-  
-  .rr-mobile-menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .rr-mobile-menu ul li {
-    margin: 10px 0;
-  }
-  
-  .rr-mobile-menu ul li a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .rr-close-menu {
-    background: none;
-    border: none;
-    font-size: 24px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
-  /* Show the menu button on mobile */
-  @media screen and (max-width: 768px) {
-    .rr-menu-button {
-      display: block;
-      order: 1;
-    }
-    .rr-custom-header .rr-icon-button{
-        display: none;
-    }
-    
-  
-    .rr-logo {
-      flex-grow: 1;
-      text-align: center;
-      order: 2;
-    }
-  
-    .rr-center-text {
-      display: none;
-    }
-  }
-  
-  /* Mobile menu open state */
-  .rr-mobile-menu.open {
-    left: 0;
-  }
-  
+}
+
+/* Mobile menu open state */
+.rr-mobile-menu.open {
+  left: 0;
+}
