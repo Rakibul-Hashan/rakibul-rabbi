@@ -6,11 +6,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 310px; /* Width of the popup on desktop */
+  width: 450px; /* Ensure it doesn't exceed 450px on larger screens */
   padding: 20px;
   z-index: 1001; /* Above the overlay */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 /* Overlay styles */
@@ -41,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 25px;
   margin-bottom: 20px;
   gap: 10px;
 }
@@ -84,18 +84,6 @@
 .rr-product-variants {
   margin-bottom: 18px;
 }
-/* 
-.rr-variant-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.rr-variant-item {
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  margin: 5px;
-  cursor: pointer;
-} */
 
 .rr-variant-list {
   display: grid;
@@ -149,6 +137,26 @@
   z-index: 1;
   transition: left 0.5s ease; /* Smooth transition */
 }
+/* small border to the left of color variant     */
+.rr-variant-item:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    z-index: 5;
+
+}
+
+
+/* 
+  Add the sliding background color effect
+  when the variant item is selected
+*/
+
 
 /* Selected state for the variant item */
 .rr-variant-item.selected::before {
@@ -160,10 +168,12 @@
   color: white;
   z-index: 2; /* Ensure text is on top */
 }
+
 /* Product size dropdown */
 .rr-product-size {
   margin-bottom: 20px;
 }
+
 /* CSS for select dropdown */
 .select-wrapper {
   position: relative;
@@ -228,7 +238,6 @@ option:nth-child(1) ~ option {
   transform: rotate(180deg);
 }
 
-
 /* Action button */
 .rr-active-cut-btn {
   background-color: #000000;
@@ -241,5 +250,36 @@ option:nth-child(1) ~ option {
 }
 
 .rr-active-cut-btn:hover {
-  /* background-color: #0056b3; */
+  /* background-color: #333333;  */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 767px) {
+  .rr-popup {
+    width: 310px;
+    min-width: 310px; /* Adjust width for mobile */
+    max-width: 90%;
+    padding: 10px; /* Reduce padding for mobile */
+    max-width: none; /* Remove max-width constraint */
+  }
+
+  .rr-product-details {
+    gap: 20px; /* Increase gap for better spacing */
+  }
+
+  .rr-popup-product-image {
+    width: 100px; /* Adjust image size for mobile */
+    height: 120px; /* Adjust image size for mobile */
+  }
+
+  .rr-product-info {
+    width: 100%; /* Full width for product info on mobile */
+  }
+
+  .rr-variant-list {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(80px, 1fr)
+    ); /* Adjust columns for mobile */
+  }
 }

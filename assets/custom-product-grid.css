@@ -59,21 +59,29 @@
 /* Responsive styles for desktop */
 @media screen and (max-width: 1440px) {
   .rr-product-item {
-    width: 430px; /* Adjusted height for desktop */
+    height: 430px; /* Adjusted height for desktop */
   }
 }
 
 /* Responsive styles for tablets */
 @media screen and (max-width: 1024px) {
+  .rr-grid {
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for tablets */
+  }
   .rr-product-item {
-    height: 700px; /* Adjusted height for tablets */
+    height: 350px; /* Adjusted height for tablets */
   }
 }
 
 /* Responsive styles for mobile */
 @media screen and (max-width: 768px) {
+  .rr-grid {
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 1 column for mobile */
+    gap: 4px;
+  }
   .rr-product-item {
-    height: 500px; /* Adjusted height for mobile */
+    min-width: auto;
+    min-height: 185px;
   }
 
   .rr-product-popup-btn {

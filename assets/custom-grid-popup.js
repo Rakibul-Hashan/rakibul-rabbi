@@ -29,28 +29,39 @@ document.addEventListener("DOMContentLoaded", function () {
       if (imageElement) imageElement.src = productImage;
 
       variantListElement.innerHTML = "";
-      sizeSelectElement.innerHTML = '<option value="">Choose your size</option>'; // Add default option
+      sizeSelectElement.innerHTML =
+        '<option value="">Choose your size</option>'; // Add default option
 
       const uniqueColors = new Set();
       const uniqueSizes = new Set();
 
       // Function to get color value or a default color
       const getColorValue = (variant) => {
-        if (variant.option2_value) {
-          return variant.option2_value;
+        if (variant.option2) {
+          return variant.option2;
         }
-        const colorMap = {
-          Black: "#000000",
-          White: "#FFFFFF",
-          Red: "#FF0000",
-          // Add more colors as needed
-        };
-        return colorMap[variant.option2] || "#000"; // Use default black if color is not in the map
+
+        // =============================
+        const variantButton = document.querySelector(".rr-product-popup-btn");
+        const jsonData = variantButton.getAttribute("data-product-variants");
+        // Parse the JSON data
+        const variants = JSON.parse(jsonData);
+        // Create the colorMap object
+        const colorMap = {};
+        // Extract unique colors
+        variants.forEach((variant) => {
+          const color = variant.option2;
+          if (color) {
+            colorMap[color] = color;
+          }
+        });
+        console.log(colorMap);
+        return colorMap || "#000"; // Use default black if color is not in the map
       };
 
       productVariants.forEach((variant) => {
         const variantColor = getColorValue(variant);
-
+        console.log("==>", variantColor);
         if (!uniqueColors.has(variant.option2)) {
           const variantDiv = document.createElement("div");
           variantDiv.className = "rr-variant-item";
@@ -89,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update size dropdown based on selected color
             const selectedColor = this.innerText;
             sizeSelectElement.innerHTML =
-              '<option value="">Select Size</option>'; // Reset dropdown
+              '<option value="">Select Size</option>  <div class="select-arrow"></div>'; // Reset dropdown
             productVariants.forEach((variant) => {
               if (variant.option2 === selectedColor) {
                 const sizeOption = document.createElement("option");
@@ -98,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sizeSelectElement.appendChild(sizeOption);
               }
             });
+          
           });
         });
 

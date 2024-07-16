@@ -20,35 +20,6 @@ h6, button, input, select, textarea {
   font-family: "Jost", sans-serif;
 }
 
-/* Header Styles */
-.rr-custom-header {
-  font-family: "Jost", sans-serif;
-}
-.rr-jost {
-  font-family: "Jost", sans-serif;
-}
-.rr-lustria {
-  font-family: "Lustria", serif;
-}
-.rr-custom-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.rr-logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.rr-center-text {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 16px;
-}
 
 /* Button Styles */
 .rr-icon-button {

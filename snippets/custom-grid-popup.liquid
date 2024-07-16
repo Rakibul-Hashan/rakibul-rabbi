@@ -1,4 +1,8 @@
+{{ 'custom-grid-popup.css' | asset_url | stylesheet_tag }}
+{{ 'custom-grid-popup.js' | asset_url | script_tag }}
+
 <div class="c-grid-popup-container">
+
   <div class="rr-popup-overlay" id="popup-overlay"></div>
   <div id="custom-product-popup" class="rr-popup">
     <button class="rr-popup-close-btn">&times;</button>
@@ -13,47 +17,56 @@
           <p class="rr-popup-product-description">{{ product.description }}</p>
         </div>
       </div>
-      <div class="rr-product-variants">
-        <h3>Colors:</h3>
-        <div class="rr-variant-list">
-          {% assign unique_colors = '' %}
+    </div>
+    <div class="rr-product-variants">
+      <h3>Colors:</h3>
+
+
+      <div class="rr-variant-list">
+        {% assign unique_colors = '' %}
+        {% for variant in product.variants %}
+
+
+          {% assign color_option = variant.option2 %}
+          {% assign color_value = variant.option2_value | default: '#000' %} {# Default to black if color value is not set #}
+          {% unless unique_colors contains color_option %}
+
+            <div
+              class="rr-variant-item"
+              data-variant-id="{{ variant.id }}"
+              data-option1="{{ variant.option1 }}"
+              data-color="{{ color_value }}"
+              data-colors="{{ color_option }}"
+              style="border-left: 5px solid {{ color_option }};">
+              {{ color_option }}
+            </div>
+            {% assign unique_colors = unique_colors | append: color_option | append: ',' %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+
+    </div>
+    <div class="rr-product-size">
+      <label for="product-size">Size:</label>
+      <div class="select-wrapper">
+        <select id="product-size" name="product-size">
+
+          {% assign unique_sizes_dropdown = '' %}
+
           {% for variant in product.variants %}
-            {% assign color_option = variant.option2 %}
-            {% assign color_value = variant.option2_value %} {# Adjust this to get the correct color value if available #}
-            {% unless unique_colors contains color_option %}
-              <div
-                class="rr-variant-item"
-                data-variant-id="{{ variant.id }}"
-                data-option1="{{ variant.option1 }}"
-                data-color="{{ color_value }}"
-                style="border-left: 5px solid {{ color_value }}">{{ color_option }}</div>
-              {% assign unique_colors = unique_colors | append: color_option | append: ',' %}
+            {% assign size_option = variant.option1 %}
+            {% unless unique_sizes_dropdown contains size_option %}
+
+              <option value="{{ variant.id }}">{{ size_option }}</option>
+              {% assign unique_sizes_dropdown = unique_sizes_dropdown | append: size_option | append: ',' %}
             {% endunless %}
           {% endfor %}
-        </div>
+          <div class="select-arrow"></div>
+        </select>
       </div>
-      <div class="rr-product-size">
-        <label for="product-size">Size:</label>
-        <div class="select-wrapper">
-          <select id="product-size" name="product-size">
-
-            {% assign unique_sizes_dropdown = '' %}
-
-            {% for variant in product.variants %}
-              {% assign size_option = variant.option1 %}
-              {% unless unique_sizes_dropdown contains size_option %}
-
-                <option value="{{ variant.id }}">{{ size_option }}</option>
-                {% assign unique_sizes_dropdown = unique_sizes_dropdown | append: size_option | append: ',' %}
-              {% endunless %}
-            {% endfor %}
-            <div class="select-arrow"></div>
-          </select>
-        </div>
-      </div>
-      <button class="rr-btn rr-active-cut-btn">Add to Cart
-        <img src="https://cdn.shopify.com/s/files/1/0883/2149/1261/files/Line_15_1.png?v=1720975103" alt="">
-      </button>
     </div>
+    <button class="rr-btn rr-active-cut-btn">Add to Cart
+      <img src="https://cdn.shopify.com/s/files/1/0883/2149/1261/files/Line_15_1.png?v=1720975103" alt="">
+    </button>
   </div>
-</div>
+</div></div>
