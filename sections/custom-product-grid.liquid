@@ -2,7 +2,10 @@
 
 
 <div class="rr-custom-product-grid">
-  <h1>hello qqq</h1>
+  <h1>
+
+    {{ section.settings.custom_grid_heading }}
+  </h1>
   <div class="rr-grid">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
@@ -34,9 +37,10 @@
     "name": "Custom Product Grid",
     "settings": [
       {
-        "type": "collection",
-        "id": "collection",
-        "label": "Select Collection"
+        "type": "text",
+        "id": "custom_grid_heading",
+        "label": "Heading Text",
+        "default": "Tisso vison in the wild"
       }
     ],
     "blocks": [

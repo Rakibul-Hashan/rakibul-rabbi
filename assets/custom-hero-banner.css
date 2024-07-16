@@ -15,10 +15,14 @@
   background-position: center;
   z-index: -1;
 }
+.custom-hero-banner .background-image button {
+  display: none;
+}
 
 .custom-hero-banner .content-box {
   position: absolute;
   bottom: 0;
+  z-index: 1;
   left: 20px; /* Adjust as needed */
   background-color: rgb(255, 255, 255); /* White box background color */
   padding: 20px;
@@ -51,6 +55,17 @@
   background-color: #0056b3; /* Hover state background color */
 }
 
+.hero-foot-note {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+  left: 50%;
+  background: #fff;
+  transform: translateX(-50%);
+}
 @media (max-width: 768px) {
   .custom-hero-banner {
     position: relative;
@@ -60,7 +75,7 @@
     flex-direction: column;
   }
   .custom-hero-banner .background-image {
-    height: 260px; /* Adjust height for mobile view */
+    height: 300px; /* Adjust height for mobile view */
     z-index: -1;
     order: 1;
     position: relative;
@@ -69,7 +84,8 @@
     justify-content: center;
   }
   .custom-hero-banner .background-image button {
-    margin-bottom: 36px;
+    margin-bottom: 100px;
+    display: block;
   }
   .custom-hero-banner .section-heading,
   .custom-hero-banner .section-paragraph,
@@ -88,6 +104,7 @@
     order: 0;
     background-color: rgba(255, 255, 255, 0.8); /* White box background color */
     padding: 20px;
+    z-index: 1;
     left: unset;
     max-width: 100%; /* Adjust maximum width for mobile */
     margin-top: 0; /* Adjust as needed */
