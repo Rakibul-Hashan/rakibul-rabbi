@@ -1,8 +1,8 @@
 {% comment %} 
-                                              This is the Liquid section template for the Custom Hero Banner Section.
-                                              It includes settings for heading text, paragraph text, button text and link,
-                                              background image, button color, and button hover color. It also includes the
-                                              necessary HTML structure to display these elements. 
+                                                              This is the Liquid section template for the Custom Hero Banner Section.
+                                                              It includes settings for heading text, paragraph text, button text and link,
+                                                              background image, button color, and button hover color. It also includes the
+                                                              necessary HTML structure to display these elements. 
 {% endcomment %}
 {{ 'custom-hero-banner.css' | asset_url | stylesheet_tag }}
 
@@ -41,6 +41,10 @@
  button_color: section.settings.button_color
       ,
  button_hover_color: section.settings.button_hover_color
+      ,
+ button_text_color: secction.settings.button_text_color
+      ,
+ button_text_hover_color: section.settings.button_text_hover_color
     %}
   </div>
   <div class="hero-foot-note">
@@ -78,7 +82,8 @@
         "id": "paragraph_text",
         "label": "Paragraph Text",
         "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      }, {
+      },
+      {
         "type": "text",
         "id": "button_text",
         "label": "Button Text",
@@ -98,11 +103,22 @@
         "default": "#007bff"
       }, {
         "type": "color",
+        "id": "button_text_color",
+        "label": "Initial Button Text color",
+        "default": "#fffff",
+        "info": "This is the initial color of the button text."
+      }, {
+        "type": "color",
         "id": "button_hover_color",
         "label": "Button Hover Color",
         "default": "#0056b3"
-      }, 
-      {
+      }, {
+        "type": "color",
+        "id": "button_text_hover_color",
+        "label": "Button Hovered Text color",
+        "default": "#fffff",
+        "info": "This is the color of the button text when the button is hovered."
+      }, {
         "type": "text",
         "id": "foot_note",
         "label": "Foot Note",

@@ -10,7 +10,8 @@
     <div class="rr-logo">Your Logo</div>
   {% endif %}
 
-  <div class="rr-center-text">Your Center Text</div>
+  <div class="rr-center-text">
+    {{ section.settings.header_middle_text }}</div>
 
   {% render 'custom-button'
     , 
@@ -46,6 +47,12 @@
       },
       {
         "type": "text",
+        "id": "header_middle_text",
+        "label": "Write Middle text for header",
+        "default": "Find the ideal gift for your loved ones."
+      },
+      {
+        "type": "text",
         "id": "heading",
         "label": "Heading",
         "default": "This is a custom section"
@@ -54,10 +61,9 @@
         "type": "text",
         "id": "button_text",
         "label": "Button Text",
-        "default": "Learn More",
+        "default": "choose gift",
         "info": "Text to display on the button"
-      },
-      {
+      }, {
         "type": "url",
         "id": "button_link",
         "label": "Button Link",

@@ -3,16 +3,25 @@
 {% assign button_link = button_link | default: '#' %}
 {% assign button_color = button_color | default: '#fff544' %}
 {% assign button_hover_color = button_hover_color | default: '#000' %}
+{% assign button_text_color = button_text_color | default: '#fffff' %}
+{% assign button_text_hover_color = button_text_hover_color | default: '#000' %}
 
 <style>
   .{{ button_class }} .rr-button__link {
     background-color: {{ button_color }};
+    color: {{ button_text_color }};
 
   }
   .{{ button_class }}.rr-button__link:after {
     background: {{ button_hover_color }};
-
   }
+
+  .{{ button_class }}.rr-wrapper .rr-button__link:hover,
+  .{{ button_class }}.rr-wrapper:hover .rr-button__link .rr-arrow {
+    color: {{ button_text_hover_color }};
+  }
+
+
 </style>
 
 <button class="rr-icon-button rr-wrapper {{ button_class }}">
